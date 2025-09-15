@@ -15,3 +15,17 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// src/index.js
+
+const express = require('express');
+const cors = require('cors'); // 1. ADD THIS LINE AT THE TOP
+const { PrismaClient } = require('@prisma/client');
+// ... other imports
+
+const app = express();
+app.use(cors()); // 2. ADD THIS LINE IMMEDIATELY AFTER CREATING THE APP
+
+// ... the rest of your app's code ...
+// app.use(express.json());
+// your routes, etc.
