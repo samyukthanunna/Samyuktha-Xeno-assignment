@@ -4,20 +4,25 @@
   "description": "Xeno FDE Internship Assignment",
   "main": "src/index.js",
   "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js"
-  },
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "dev": "npx prisma generate && node src/index.js",
+  "build": "react-scripts build"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2",
     "@prisma/client": "^5.15.0",
-    "bullmq": "^5.8.2",
+    "axios": "^1.12.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "ioredis": "^5.4.1",
-    "pg": "^8.12.0"
+    "pg": "^8.12.0",
+    "recharts": "^3.2.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.2",

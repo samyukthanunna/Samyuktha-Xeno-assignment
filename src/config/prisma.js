@@ -1,4 +1,12 @@
-// A centralized Prisma Client instance to be used across the application.
-// This prevents creating too many connections to the database.
+// src/config/prisma.js
+
 import { PrismaClient } from '@prisma/client';
-export const prisma = new PrismaClient();
+
+let prisma;
+
+export const getPrismaClient = () => {
+  if (!prisma) {
+    prisma = new PrismaClient();
+  }
+  return prisma;
+};
