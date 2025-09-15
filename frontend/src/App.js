@@ -1,16 +1,17 @@
-// src/App.js
+// frontend/src/App.js
+
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import './index.css';
+import './index.css'; // Or './App.css' depending on your file name
 
-// Import the new components from their separate files
+// Import all your widget components
 import KeyMetricsWidget from './components/KeyMetricsWidget';
 import TrendChartWidget from './components/TrendChartWidget';
 import TopCustomersWidget from './components/TopCustomersWidget';
 import OrdersByDateWidget from './components/OrdersByDateWidget';
 
 // --- CONFIGURATION ---
-const BACKEND_URL = 'https://samyuktha-xeno-assignment.onrender.com'; // ⚠️ REMEMBER TO PASTE YOUR RENDER URL HERE
+const BACKEND_URL = 'https://samyuktha-xeno-assignment.onrender.com';
 const SHOP_DOMAIN = 'samyuktha-xeno-assignment.myshopify.com';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   const [startDate, setStartDate] = useState('2025-09-01');
   const [endDate, setEndDate] = useState('2025-09-15');
 
+  // Fetch general stats and top customers once on page load
   useEffect(() => {
     axios.get(`${BACKEND_URL}/api/stats?shop=${SHOP_DOMAIN}`)
       .then(response => setMetrics(response.data))
@@ -30,12 +32,14 @@ function App() {
       .catch(err => console.error("Error fetching top customers:", err));
   }, []);
 
+  // Function to fetch orders based on date range
   const fetchOrders = useCallback(() => {
     axios.get(`${BACKEND_URL}/api/orders-by-date?shop=${SHOP_DOMAIN}&startDate=${startDate}&endDate=${endDate}`)
       .then(response => setOrders(response.data))
       .catch(err => console.error("Error fetching orders:", err));
   }, [startDate, endDate]);
 
+  // Run the fetchOrders function whenever the date range changes
   useEffect(() => {
     fetchOrders();
   }, [fetchOrders]);
@@ -47,9 +51,6 @@ function App() {
         <p>Tenant: {SHOP_DOMAIN}</p>
       </header>
       
-      {/* This is now much cleaner! We are just arranging the components
-        and passing the live data down to them as props.
-      */}
       <main className="bento-grid">
         <KeyMetricsWidget metrics={metrics} />
         <TrendChartWidget />
@@ -67,5 +68,4 @@ function App() {
   );
 }
 
-export default App; 
-// forcing deploy
+export default App;

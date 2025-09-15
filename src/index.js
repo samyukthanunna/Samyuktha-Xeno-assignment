@@ -107,3 +107,55 @@ app.get('/api/top-customers', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is listening on http://localhost:${PORT}`);
 });
+
+// ADD THIS ENTIRE BLOCK OF CODE TO src/index.js
+
+// This function gets the top 5 customers using Prisma
+async function getTopSpendingCustomers() {
+  // IMPORTANT: Check that 'order' and 'customer' match your model names in schema.prisma
+  const topCustomers = await prisma.order.groupBy({
+    by: ['customerId'], // Check this field name in your Order model
+    _sum: {
+      totalPrice: true, // Check this field name in your Order model
+    },
+    orderBy: {
+      _sum: {
+        totalPrice: 'desc',
+      },
+    },
+    take: 5,
+  });
+
+  // This part fetches the customer names to make the list readable
+  const customerDetails = await prisma.customer.findMany({
+    where: {
+      id: {
+        in: topCustomers.map(c => c.customerId),
+      },
+    },
+  });
+
+  // This part combines the data
+  const results = topCustomers.map(customerSpend => {
+    const details = customerDetails.find(d => d.id === customerSpend.customerId);
+    // IMPORTANT: Check that 'firstName' and 'lastName' match your model
+    return {
+      first_name: details ? details.firstName : 'Unknown',
+      last_name: details ? details.lastName : 'Customer',
+      total_spend: customerSpend._sum.totalPrice,
+    };
+  });
+
+  return results;
+}
+
+// This is the new API route the frontend will call
+app.get('/api/insights/top-customers', async (req, res) => {
+  try {
+    const customers = await getTopSpendingCustomers();
+    res.json(customers);
+  } catch (error) {
+    console.error('Error fetching top customers:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});

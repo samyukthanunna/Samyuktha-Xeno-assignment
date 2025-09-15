@@ -1,18 +1,30 @@
-// src/components/TopCustomersWidget.js
+// frontend/src/components/TopCustomersWidget.js
+
 import React from 'react';
 
-const TopCustomersWidget = ({ customers }) => (
-  <div className="bento-box widget-top-customers">
-    <h3>Top 5 Customers by Spend</h3>
-    <ul>
-      {customers && customers.length > 0 ? customers.map((customer, index) => (
-        <li key={customer.id || index}>
-          <span>{customer.firstName} {customer.lastName}</span>
-          <span className="count">${parseFloat(customer.totalSpent).toFixed(2)}</span>
-        </li>
-      )) : <p>No customer data.</p>}
-    </ul>
-  </div>
-);
+function TopCustomersWidget({ customers }) {
+  if (!customers || customers.length === 0) {
+    return (
+      <div className="widget-container top-customers-widget">
+        <h3>Top 5 Customers by Spend</h3>
+        <p>Loading data...</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="widget-container top-customers-widget">
+      <h3>Top 5 Customers by Spend</h3>
+      <ol className="top-customers-list">
+        {customers.map((customer, index) => (
+          <li key={index}>
+            <span>{customer.first_name} {customer.last_name}</span>
+            <strong>${parseFloat(customer.total_spend).toFixed(2)}</strong>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
 
 export default TopCustomersWidget;
