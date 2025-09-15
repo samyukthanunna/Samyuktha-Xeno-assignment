@@ -1,8 +1,8 @@
-// src/index.js - CORRECTED VERSION
+// src/index.js - FINAL CORRECTED VERSION
 
 import 'dotenv/config';
 import express from 'express';
-import cors from 'cors'; // FIX 1: Removed duplicate import
+import cors from 'cors';
 import webhookRouter from './features/webhooks/webhook.router.js';
 import { getPrismaClient } from './config/prisma.js';
 
@@ -11,13 +11,10 @@ const PORT = process.env.PORT || 3000;
 
 // --- MIDDLEWARE & CORS CONFIGURATION ---
 
-// Middleware for parsing JSON requests
 app.use(express.json());
 
-// For production, specify your frontend's exact domain for security.
 const FRONTEND_URL = process.env.FRONTEND_URL || 'https://samyuktha-final-submission.onrender.com';
 
-// FIX 2: Using only ONE cors configuration. This is the correct way.
 app.use(cors({
   origin: FRONTEND_URL
 }));
@@ -25,22 +22,18 @@ app.use(cors({
 
 // --- ROUTES ---
 
-// A simple health check route
 app.get('/', (req, res) => {
   res.send('Xeno FDE Ingestion Service is running! 🚀');
 });
 
-// Webhook router for receiving data from Shopify
 app.use('/webhooks', webhookRouter);
 
 
 // --- DASHBOARD API ROUTES ---
 
-// 1. Fetch Key Metrics (Total Customers, Orders, Revenue)
 app.get('/api/stats', async (req, res) => {
   const prisma = getPrismaClient();
   const { shop } = req.query;
-
   try {
     const totalCustomers = await prisma.customer.count({ where: { shop } });
     const totalOrders = await prisma.order.count({ where: { shop } });
@@ -58,11 +51,9 @@ app.get('/api/stats', async (req, res) => {
   }
 });
 
-// 2. Fetch Orders by Date Range
 app.get('/api/orders-by-date', async (req, res) => {
   const prisma = getPrismaClient();
   const { shop, startDate, endDate } = req.query;
-
   try {
     const orders = await prisma.order.findMany({
       where: {
@@ -80,11 +71,9 @@ app.get('/api/orders-by-date', async (req, res) => {
   }
 });
 
-// 3. Fetch Top 5 Customers by Spend (Original Route)
 app.get('/api/top-customers', async (req, res) => {
   const prisma = getPrismaClient();
   const { shop } = req.query;
-
   try {
     const topCustomers = await prisma.customer.findMany({
       where: { shop },
@@ -97,16 +86,13 @@ app.get('/api/top-customers', async (req, res) => {
   }
 });
 
-// FIX 3: MOVED THIS ENTIRE BLOCK TO BE *BEFORE* app.listen
-// This is the new API route the frontend will call
 app.get('/api/insights/top-customers', async (req, res) => {
-    const prisma = getPrismaClient(); // FIX 4: Added prisma client instance
+    const prisma = getPrismaClient();
     try {
-        // IMPORTANT: Check that 'order' and 'customer' match your model names in schema.prisma
-        const topCustomers = await prisma.order.groupBy({
-            by: ['customerId'], // Check this field name in your Order model
+        const topCustomersBySpend = await prisma.order.groupBy({
+            by: ['customerId'],
             _sum: {
-                totalPrice: true, // Check this field name in your Order model
+                totalPrice: true,
             },
             orderBy: {
                 _sum: {
@@ -119,18 +105,18 @@ app.get('/api/insights/top-customers', async (req, res) => {
         const customerDetails = await prisma.customer.findMany({
             where: {
                 id: {
-                    in: topCustomers.map(c => c.customerId),
+                    in: topCustomersBySpend.map(c => c.customerId),
                 },
             },
         });
 
-        const results = topCustomers.map(customerSpend => {
-            const details = customerDetails.find(d => d.id === customerSpend.customerId);
+        const results = topCustomersBySpend.map(spendData => {
+            const details = customerDetails.find(d => d.id === spendData.customerId);
             return {
-                id: details ? details.id : 'unknown', // Pass ID for React key
+                id: details ? details.id : 'unknown',
                 first_name: details ? details.firstName : 'Unknown',
                 last_name: details ? details.lastName : 'Customer',
-                total_spend: customerSpend._sum.totalPrice,
+                total_spend: spendData._sum.totalPrice,
             };
         });
         res.json(results);
@@ -142,7 +128,6 @@ app.get('/api/insights/top-customers', async (req, res) => {
 
 
 // --- START SERVER ---
-// This MUST be the last part of the file
 app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
 });
