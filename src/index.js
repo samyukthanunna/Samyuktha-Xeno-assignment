@@ -1,5 +1,3 @@
-// src/index.js - FINAL CORRECTED VERSION
-
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
@@ -10,18 +8,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // --- MIDDLEWARE & CORS CONFIGURATION ---
-
 app.use(express.json());
-
 const FRONTEND_URL = process.env.FRONTEND_URL || 'https://samyuktha-final-submission.onrender.com';
-
 app.use(cors({
   origin: FRONTEND_URL
 }));
 
 
 // --- ROUTES ---
-
 app.get('/', (req, res) => {
   res.send('Xeno FDE Ingestion Service is running! 🚀');
 });
@@ -30,7 +24,6 @@ app.use('/webhooks', webhookRouter);
 
 
 // --- DASHBOARD API ROUTES ---
-
 app.get('/api/stats', async (req, res) => {
   const prisma = getPrismaClient();
   const { shop } = req.query;
