@@ -12,7 +12,22 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Allow all origins for the assignment submission
-app.use(cors());
+// In src/index.js
+const allowedOrigins = [
+  'http://localhost:3000', // For local development
+  'https://samyuktha-xeno-assignment.vercel.app', // Your main frontend URL
+  process.env.FRONTEND_URL 
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin) || origin.startsWith('https://samyuktha-xeno-assignment-')) {
+      callback(null, true);
+    } else {
+      callback(new Error('This request is not allowed by CORS'));
+    }
+  }
+}));
 
 
 // --- ROUTES ---
@@ -125,4 +140,5 @@ app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
 
 });
+
 
