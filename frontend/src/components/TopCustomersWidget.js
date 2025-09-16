@@ -1,30 +1,38 @@
-// frontend/src/components/TopCustomersWidget.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './TopCustomersWidget.css';
 
-import React from 'react';
+const TopCustomersWidget = () => {
+  const [customers, setCustomers] = useState([]);
 
-function TopCustomersWidget({ customers }) {
-  if (!customers || customers.length === 0) {
-    return (
-      <div className="widget-container top-customers-widget">
-        <h3>Top 5 Customers by Spend</h3>
-        <p>Loading data...</p>
-      </div>
-    );
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://samyuktha-xeno-assignment-ozpvf47mr-sams-projects-8338b950.vercel.app');
+        setCustomers(response.data);
+      } catch (error) {
+        console.error('Error fetching top customers:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
-    <div className="widget-container top-customers-widget">
-      <h3>Top 5 Customers by Spend</h3>
-      <ol className="top-customers-list">
-        {customers.map((customer, index) => (
-          <li key={index}>
-            <span>{customer.first_name} {customer.last_name}</span>
-            <strong>${parseFloat(customer.total_spend).toFixed(2)}</strong>
-          </li>
-        ))}
-      </ol>
+    <div className="top-customers-list">
+      {customers.length > 0 ? (
+        <ul>
+          {customers.map((customer) => (
+            <li key={customer.id}>
+              <span className="customer-name">{customer.name}</span>
+              <span className="customer-spend">${customer.totalSpend.toFixed(2)}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No customers found.</p>
+      )}
     </div>
   );
-}
+};
 
 export default TopCustomersWidget;
