@@ -1,22 +1,22 @@
-// file: backend/index.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const { PrismaClient } = require('@prisma/client');
 const cors = require('cors');
-// CORRECT PATHS
-// CORRECT FILENAME
-const insightsRouter = require('./features/insights/router.js');
-const webhookRouter = require('./features/webhooks/webhook.router.js');
+
+// CORRECTED PATH - notice the capital 'R' in webhookRouter.js
+const webhookRouter = require('./features/webhooks/webhookRouter.js');
+// TEMPORARILY DISABLED - This folder does not exist yet.
+// const insightsRouter = require('./features/insights/router.js');
 
 const app = express();
 const prisma = new PrismaClient();
 const port = process.env.PORT || 3000;
 
-app.use(cors()); // Allows your frontend to make requests
+app.use(cors());
 app.use(bodyParser.json());
 
-// Main API Routes for the Dashboard
-app.use('/api/insights', insightsRouter);
+// Main API Routes for the Dashboard - TEMPORARILY DISABLED
+// app.use('/api/insights', insightsRouter);
 
 // Shopify Webhook Routes
 app.use('/api/webhooks', webhookRouter);
