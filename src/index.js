@@ -8,10 +8,24 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // --- MIDDLEWARE & CORS CONFIGURATION ---
+// --- MIDDLEWARE & CORS CONFIGURATION ---
 app.use(express.json());
-const FRONTEND_URL = process.env.FRONTEND_URL || 'https://samyuktha-final-submission.onrender.com';
+
+const allowedOrigins = [
+  'http://localhost:3000', // For local development
+  'https://samyuktha-xeno-assignment.vercel.app', // Your main Vercel frontend URL
+  process.env.FRONTEND_URL // The URL from your environment variable
+];
+
 app.use(cors({
-  origin: FRONTEND_URL
+  origin: function (origin, callback) {
+    // This logic allows requests from your main URLs and also from the special preview URLs Vercel creates.
+    if (!origin || allowedOrigins.includes(origin) || origin.startsWith('https://samyuktha-xeno-assignment-')) {
+      callback(null, true);
+    } else {
+      callback(new Error('This request is not allowed by CORS'));
+    }
+  }
 }));
 
 
@@ -123,4 +137,5 @@ app.get('/api/insights/top-customers', async (req, res) => {
 // --- START SERVER ---
 app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
+
 });
