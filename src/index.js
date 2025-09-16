@@ -3,8 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { PrismaClient } = require('@prisma/client');
 const cors = require('cors');
-const insightsRouter = require('./routes/insights');
-const webhookRouter = require('./routes/webhooks');
+// CORRECT PATHS
+const insightsRouter = require('./features/insights/insights.router.js');
+const webhookRouter = require('./features/webhooks/webhook.router.js');
 
 const app = express();
 const prisma = new PrismaClient();
