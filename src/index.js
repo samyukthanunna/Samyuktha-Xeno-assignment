@@ -73,8 +73,7 @@ app.get('/api/top-customers', async (req, res) => {
       take: 5,
     });
     res.json(topCustomers);
-  } catch (error)
- {
+  } catch (error) {
     res.status(500).json({ error: 'Failed to fetch top customers' });
   }
 });
@@ -94,6 +93,10 @@ app.get('/api/insights/top-customers', async (req, res) => {
             },
             take: 5,
         });
+        
+        if (topCustomersBySpend.length === 0) {
+            return res.json([]);
+        }
 
         const customerDetails = await prisma.customer.findMany({
             where: {
