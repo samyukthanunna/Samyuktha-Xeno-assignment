@@ -1,12 +1,15 @@
-// features/webhooks/webhook.router.js
-import express from 'express';
-import { handleShopifyWebhook } from './webhook.handlers.js';
+// file: features/webhooks/webhook.router.js
+const express = require('express');
+const { handleShopifyWebhook } = require('./webhook.handlers');
 
 const router = express.Router();
 
 // A single route to handle all incoming Shopify webhooks
-// We use express.raw({ type: 'application/json' }) to get the raw request body, 
 // which is needed for HMAC signature verification.
-router.post('/shopify', express.raw({ type: 'application/json' }), handleShopifyWebhook);
+router.post('/shopify/customers', handleShopifyWebhook);
+router.post('/shopify/orders', handleShopifyWebhook);
+router.post('/shopify/products', handleShopifyWebhook);
+router.post('/shopify/checkouts', handleShopifyWebhook);
+router.post('/shopify/carts', handleShopifyWebhook);
 
-export default router;
+module.exports = router;

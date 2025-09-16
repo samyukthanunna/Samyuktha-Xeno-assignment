@@ -1,0 +1,240 @@
+[33mcommit 7855b438f223c03ed22102ed77913e343edc3625[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 16:11:15 2025 +0000
+
+    Forcing Vercel redeployment
+
+[33mcommit 78ebf11f804b19ec12e0bfb7dc8d8c264bb5e2ea[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 15:38:26 2025 +0000
+
+    Forcing Vercel redeployment
+
+[33mcommit 7a531a7d9419acccf2d595d954a8c486c9b4ce4e[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 15:29:13 2025 +0000
+
+    Fix: Add react-scripts to dependencies
+
+[33mcommit 4651c0087b214769d793da08884a6a727e1044fe[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 12:31:17 2025 +0530
+
+    Update vercel.json
+
+[33mcommit 5fce0e34374a717ac0f9ad03b8467cd99a7e86c3[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 06:57:18 2025 +0000
+
+    Fix: Add react-router-dom to dependencies
+
+[33mcommit fe7a7eb0e2c83b46301addf5255cbe8fd89466a8[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 06:36:07 2025 +0000
+
+    feat: Add react-router-dom dependency
+
+[33mcommit 68983354ad213ca3d2ada133d25cf8d48e74b2c4[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 12:10:59 2025 +0530
+
+    Update index.js
+
+[33mcommit 8250a09b7f530cf4c658cec74c6e8cfed82e0bf4[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 12:04:06 2025 +0530
+
+    Update index.js
+
+[33mcommit f275fa9c1731d633418a780b5efb1bd9eb54bc7f[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 12:00:48 2025 +0530
+
+    Update index.js
+
+[33mcommit ee9d344a1b0eaa959442f312fd09a144e6a03fbd[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 12:00:06 2025 +0530
+
+    Update index.js
+
+[33mcommit b8f603fc2ad1a7891d13fbf5f71863c1b5c527a0[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 11:48:52 2025 +0530
+
+    Update App.js
+
+[33mcommit 6efe2973beb26b2b4034efd9c6d0a02d90382b86[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 11:46:27 2025 +0530
+
+    Update index.js
+
+[33mcommit f9d4b9eb36957a228ee8e947dbd4b80505e25177[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 11:37:05 2025 +0530
+
+    Update App.js
+
+[33mcommit 36df5126b93601736804e72e9bb2ad30a6be5768[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 11:11:17 2025 +0530
+
+    Update index.js
+
+[33mcommit 76dcfb1df62e2684c933ff77679ae687b8598b20[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Tue Sep 16 11:01:42 2025 +0530
+
+    Update index.js
+
+[33mcommit c66851f255317cb1d4e90cea768aaa7ab2a7d150[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 23:48:05 2025 +0530
+
+    Update App.js
+
+[33mcommit 324a17021eddcc6412a122ac0da7f9d1c72504f6[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 23:43:29 2025 +0530
+
+    Update App.js
+
+[33mcommit 7fd8c93492d48149188de86a03c71d40fc40e6fc[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 23:32:58 2025 +0530
+
+    Update index.js
+
+[33mcommit 1aa37e3399f640b2fb025af80e53a461a2f80547[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 23:27:14 2025 +0530
+
+    Update vercel.json
+
+[33mcommit 48b81204bb2d355721fcb459af257760092933b3[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 17:48:51 2025 +0000
+
+    fix: Final cleanup of server code
+
+[33mcommit d3d92874ccb764680a3a5cd856858258b4b6a8cb[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 17:37:28 2025 +0000
+
+    fix: Force replace server code with correct version
+
+[33mcommit aa5f336483a527be6bfab8770518f1d10ce00425[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 17:34:45 2025 +0000
+
+    fix: Correct critical server errors in index.js
+
+[33mcommit fc0f101de4a2bb5e44f98adb830d6d1964ad5deb[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 17:28:41 2025 +0000
+
+    feat: Add top customers endpoint and display on frontend
+
+[33mcommit 4c560835aad0008183e0b931a3f05a824bb991ce[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 17:23:02 2025 +0000
+
+    Updated backend with CORS configuration
+
+[33mcommit 9ca0d8f352011e91bc5c783c35b599ba1ef8482e[m
+Merge: b0b7fb3 be6b074
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 15:29:00 2025 +0000
+
+    Merge branch 'main' of https://github.com/samyukthanunna/Samyuktha-Xeno-assignment
+
+[33mcommit b0b7fb3379a21eca14acbb7909111cbd7d46dbcf[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 15:25:26 2025 +0000
+
+    chore: clean up backend package.json
+
+[33mcommit be6b074c18966e5117de3cb74ddc4a9c3b3be90d[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 20:46:15 2025 +0530
+
+    Update package.json
+
+[33mcommit 7dd3a325ab923963992d0a7496886c346f5ddc2f[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 15:10:00 2025 +0000
+
+    fix: remove all backend packages from frontend
+
+[33mcommit c56873f958cc86628438b852b150ec9ee76246c9[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 15:04:04 2025 +0000
+
+    fix: remove all backend packages from frontend
+
+[33mcommit 2c276a980d95c7665d23bffe3f896cf0793cfe1e[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 19:59:06 2025 +0530
+
+    Update package.json
+
+[33mcommit 0b21ceed0ee42bdf85d9ca9664939d88f3d23558[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 13:25:36 2025 +0000
+
+    fix: enable CORS on backend
+
+[33mcommit 77d5ffba9cc729bacb0b52f07ecc1e8bd53ae08f[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 13:18:41 2025 +0000
+
+    feat: integrate all widgets into final dashboard layout
+
+[33mcommit f3d0a6b4e7198788cc0863d3b4f625a4ca2b4863[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 12:51:48 2025 +0000
+
+    fix: Add axios to dependencies
+
+[33mcommit 617f5a91d089060a41e7eeec4f3377f003856724[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 12:08:55 2025 +0000
+
+    feat: Adjust build script for Render
+
+[33mcommit 09fca308f8533eb6ffec6dfcf16b4310b8015dba[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 11:33:24 2025 +0000
+
+    chore: Force redeploy
+
+[33mcommit dacdc3436886608d4f21571c9657fca58aa258e4[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 11:13:56 2025 +0000
+
+    Your descriptive commit message here
+
+[33mcommit b6e386f0bedd7d49b7eb6b213cf30754507a6839[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 16:10:25 2025 +0530
+
+    Update vercel.json
+
+[33mcommit 2e3c5ba0d1adb82230f8894270c37f922a3e48ce[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 15:49:11 2025 +0530
+
+    vercel.json
+
+[33mcommit 5ea8a7eae10cb95ef24859d82dcc7389bdfab91b[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 09:53:39 2025 +0000
+
+    feat: Add build script to frontend
+
+[33mcommit 9a0cb45c8e89a44a0b26cc8e8a30f6d4fa64c968[m
+Author: Samyuktha Nunna <159902541+samyukthanunna@users.noreply.github.com>
+Date:   Mon Sep 15 08:14:50 2025 +0530
+
+    final project upload

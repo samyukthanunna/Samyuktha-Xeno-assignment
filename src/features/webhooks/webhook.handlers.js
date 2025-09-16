@@ -94,3 +94,89 @@ export const handleShopifyWebhook = async (req, res) => {
     res.status(500).send('Error processing webhook.');
   }
 };
+
+// file: features/webhooks/webhook.handlers.js
+const { PrismaClient } = require('@prisma/client');
+const crypto = require('crypto');
+
+const prisma = new PrismaClient();
+const SHOPIFY_API_SECRET = process.env.SHOPIFY_API_SECRET;
+
+const handleShopifyWebhook = async (req, res) => {
+  // Always verify the webhook for security
+  const hmac = req.get('X-Shopify-Hmac-Sha256');
+  const body = req.rawBody; // Make sure express.raw() middleware is used for this
+
+  const generatedHash = crypto
+    .createHmac('sha256', SHOPIFY_API_SECRET)
+    .update(body, 'utf8', 'hex')
+    .digest('base64');
+
+  if (generatedHash !== hmac) {
+    return res.status(401).send('Webhook verification failed.');
+  }
+
+  // Determine the type of webhook event
+  const topic = req.get('X-Shopify-Topic');
+  const storeDomain = req.get('X-Shopify-Shop-Domain');
+
+  // --- Start: Your Data Ingestion Logic ---
+  const data = JSON.parse(body);
+
+  try {
+    // Look up the store in your database
+    const store = await prisma.store.findUnique({
+      where: { shopifyStoreId: storeDomain },
+    });
+
+    if (!store) {
+      console.error('Store not found for domain:', storeDomain);
+      return res.status(404).send('Store not found.');
+    }
+
+    if (topic === 'customers/create' || topic === 'customers/update') {
+      await prisma.customer.upsert({
+        where: { id: data.id },
+        update: {
+          // Map updated customer data
+          name: data.first_name + ' ' + data.last_name,
+          email: data.email,
+          // ... add other fields from Shopify
+          storeId: store.id
+        },
+        create: {
+          id: data.id,
+          name: data.first_name + ' ' + data.last_name,
+          email: data.email,
+          // ...
+          storeId: store.id
+        },
+      });
+      console.log('Customer webhook processed.');
+    } else if (topic === 'orders/create' || topic === 'orders/updated') {
+      await prisma.order.upsert({
+        where: { id: data.id },
+        update: {
+          totalPrice: data.total_price,
+          // ... add other order fields
+          storeId: store.id
+        },
+        create: {
+          id: data.id,
+          totalPrice: data.total_price,
+          // ...
+          storeId: store.id
+        },
+      });
+      console.log('Order webhook processed.');
+    }
+  } catch (error) {
+    console.error('Error handling webhook:', error);
+    return res.status(500).send('Internal Server Error.');
+  }
+
+  // --- End: Your Data Ingestion Logic ---
+  res.status(200).send('Webhook processed successfully.');
+};
+
+module.exports = { handleShopifyWebhook };
