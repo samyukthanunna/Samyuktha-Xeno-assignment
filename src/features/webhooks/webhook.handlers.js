@@ -16,9 +16,9 @@ const verifyWebhook = (req) => {
 // Main handler function
 export const handleShopifyWebhook = async (req, res) => {
   // 1. Verify the webhook is from Shopify
-  if (!verifyWebhook(req)) {
-    return res.status(401).send('Webhook verification failed.');
-  }
+  //if (!verifyWebhook(req)) {
+  //  return res.status(401).send('Webhook verification failed.');
+  //}
 
   // 2. Get the event topic and shop domain from headers
   const topic = req.get('X-Shopify-Topic');
