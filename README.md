@@ -49,7 +49,7 @@ Follow these steps to set up the project locally.
 
 1.  **Clone the repository:**
     ```sh
-    git clone [YOUR_REPO_URL]
+    git clone [https://github.com/samyukthanunna/Samyuktha-Xeno-assignment.git]
     cd [YOUR_PROJECT_FOLDER]
     ```
 
