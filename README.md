@@ -50,18 +50,18 @@ Follow these steps to set up the project locally.
 1.  **Clone the repository:**
     ```sh
     git clone [https://github.com/samyukthanunna/Samyuktha-Xeno-assignment.git]
-    cd [YOUR_PROJECT_FOLDER]
+    cd [https://github.com/samyukthanunna/Samyuktha-Xeno-assignment]
     ```
 
-2.  **Create a `.env` file:**
-    Copy the `.env.example` file and fill in your environment variables.
+2.  **Created a `.env` file:**
+    
 
     ```
     # .env
-    DATABASE_URL="postgresql://[USER]:[PASSWORD]@[HOST]:[PORT]/[DATABASE_NAME]"
-    SHOPIFY_API_KEY="[YOUR_SHOPIFY_API_KEY]"
-    SHOPIFY_API_SECRET="[YOUR_SHOPIFY_API_SECRET]"
-    SESSION_SECRET="[YOUR_RANDOM_SESSION_SECRET]"
+    DATABASE_URL="postgresql://xeno_database_pg5j_user:4thY45XnsqOLlYz7dm90HxG7QEoSxYbQ@dpg-d33ertodl3ps738r087g-a.oregon-postgres.render.com/xeno_database_pg5j"
+    SHOPIFY_API_KEY="b445ffcd4c104797a3089be5bbc51c10"
+    SHOPIFY_API_SECRET="d581fb5d5a5c3ef79c3515dfc9713a6ccb49c2008f2f44db66542177b1edef72"
+    PORT="3000"
     ```
 
 3.  **Install dependencies and run migrations:**
